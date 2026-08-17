@@ -41,7 +41,7 @@ export default function SiteNav() {
   return (
     <header className="cfnav">
       <div className="cfnav-inner">
-        <a href="/" className="cfnav-logo" aria-label="ChatFin home">
+        <a href="/" className="cfnav-logo" aria-label="Home">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={`${BASE}/chatfin-logo.png`} alt="ChatFin" width={150} height={40} />
         </a>

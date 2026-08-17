@@ -1,5 +1,7 @@
 // Site-wide strip beneath each page footer. Carries deep backlinks to ChatFin
-// article pages plus the business name, address and phone, on every page.
+// article pages. Deliberately carries NO ChatFin address/phone/NAP and no ChatFin
+// copyright: those read as an ownership claim. ChatFin's own social profiles are
+// labelled as ChatFin's, not as this site's.
 const READS = [
   ['State of AI in Finance 2026', 'https://chatfin.ai/blog/state-of-ai-in-finance-2026-adoption-workforce-and-the-numbers-that-matter/'],
   ['The Complete Guide to AI in the Finance Function', 'https://chatfin.ai/blog/ai-finance/the-complete-guide-to-ai-in-the-finance-function/'],
@@ -52,6 +54,7 @@ export default function Attribution() {
         </p>
 
         <p style={{ margin: '14px 0 0' }}>
+          <span style={{ color: '#5c6b63' }}>ChatFin on the web: </span>
           {SOCIAL.map(([t, href], i) => (
             <span key={href}>
               {i > 0 && <span style={{ color: '#33403a' }}> &middot; </span>}
@@ -60,13 +63,10 @@ export default function Attribution() {
           ))}
         </p>
 
-        <p style={{ margin: '14px 0 0', color: '#5c6b63' }}>
-          ChatFin, 1900 Powell St Ste 700, Emeryville, CA 94608, United States
-          &middot;{' '}
-          <a href="tel:+17078476514" style={muted}>+1 707-847-6514</a>
-          &middot;{' '}
-          <a href="https://maps.google.com/?cid=12953580501490591444" target="_blank" rel="noopener" style={muted}>
-            View on Google Maps
+        <p style={{ margin: '18px 0 0', color: '#5c6b63' }}>
+          &copy; 2026 Tara Parker &middot;{' '}
+          <a href="https://x.com/TaraParker94392" target="_blank" rel="noopener" style={muted}>
+            @TaraParker94392
           </a>
         </p>
       </div>
