@@ -1,0 +1,147 @@
+/* Base: keep a dark ground so there is no flash before the page's own <style> applies. */
+html, body { margin: 0; padding: 0; background: #0A0F0D; }
+
+/* ============================ ChatFin navbar ============================ */
+/* All classes are namespaced under cfnav- so the injected page CSS (which uses
+   generic names like .dd, .wrap, .hero) can never collide with the navbar. */
+.cfnav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(18, 18, 20, 0.93);
+  backdrop-filter: saturate(150%) blur(12px);
+  -webkit-backdrop-filter: saturate(150%) blur(12px);
+  border-bottom: 1px solid rgba(34, 197, 94, 0.10);
+  font-family: "DM Sans", system-ui, -apple-system, sans-serif;
+}
+.cfnav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 72px;
+  padding: 0 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.cfnav-logo { display: inline-flex; align-items: center; }
+.cfnav-logo img { height: 34px; width: auto; display: block; }
+
+.cfnav-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.cfnav-menu li { position: relative; }
+
+/* High-specificity so the injected page CSS (a { color: green }) can't win. */
+.cfnav .cfnav-menu a,
+.cfnav .cfnav-menu .cfnav-dd-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #EAFFF0;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1;
+  padding: 12px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: color .15s ease, background .15s ease;
+}
+.cfnav .cfnav-menu > ul > li > a:hover,
+.cfnav .cfnav-menu > ul > li > .cfnav-dd-top:hover {
+  color: #22C55E;
+  background: rgba(34, 197, 94, 0.08);
+}
+.cfnav-caret {
+  width: 0; height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid currentColor;
+  opacity: .6;
+  margin-left: 2px;
+}
+
+/* Dropdowns */
+.cfnav .cfnav-dd {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 240px;
+  background: #0F1613;
+  border: 1px solid rgba(34, 197, 94, 0.14);
+  border-radius: 14px;
+  padding: 8px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition: opacity .16s ease, transform .16s ease, visibility .16s;
+}
+.cfnav-has-dd:hover > .cfnav-dd { opacity: 1; visibility: visible; transform: translateY(0); }
+.cfnav-dd-wide { min-width: 340px; }
+.cfnav-dd-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-width: 440px;
+  gap: 2px;
+}
+.cfnav .cfnav-dd a {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 9px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.cfnav .cfnav-dd-wide a strong { display: block; color: #EAFFF0; font-weight: 600; }
+.cfnav .cfnav-dd-wide a span { display: block; color: #7C8B83; font-size: 12.5px; font-weight: 400; margin-top: 2px; }
+.cfnav .cfnav-dd a:hover { background: rgba(34, 197, 94, 0.10); }
+.cfnav .cfnav-dd a:hover strong { color: #22C55E; }
+.cfnav .cfnav-dd .cfnav-dd-cta {
+  margin-top: 6px;
+  border-top: 1px solid rgba(34, 197, 94, 0.12);
+  color: #22C55E;
+  font-weight: 600;
+}
+
+/* Primary CTA */
+.cfnav .cfnav-cta {
+  background: #22C55E;
+  color: #06210F !important;
+  font-weight: 700;
+  padding: 11px 20px;
+  border-radius: 999px;
+}
+.cfnav .cfnav-cta:hover { background: #16A34A; color: #06210F !important; }
+
+/* Hamburger (hidden on desktop) */
+.cfnav-toggle { display: none; background: none; border: 0; cursor: pointer; padding: 8px; }
+.cfnav-toggle span { display: block; width: 24px; height: 2px; margin: 4px 0; background: #EAFFF0; border-radius: 2px; }
+
+@media (max-width: 900px) {
+  .cfnav-toggle { display: block; }
+  .cfnav-menu {
+    position: absolute;
+    top: 72px; left: 0; right: 0;
+    background: #0B120F;
+    border-bottom: 1px solid rgba(34, 197, 94, 0.14);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .28s ease;
+  }
+  .cfnav-menu.is-open { max-height: 90vh; overflow: auto; }
+  .cfnav-menu ul { flex-direction: column; align-items: stretch; gap: 0; padding: 10px 16px 22px; }
+  .cfnav-menu li { border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .cfnav .cfnav-dd {
+    position: static; opacity: 1; visibility: visible; transform: none;
+    box-shadow: none; border: 0; background: transparent; padding: 4px 0 10px 10px;
+    min-width: 0;
+  }
+  .cfnav-dd-cols { grid-template-columns: 1fr; min-width: 0; }
+  .cfnav-cta-li { margin-top: 12px; }
+  .cfnav .cfnav-cta { display: inline-block; text-align: center; }
+}

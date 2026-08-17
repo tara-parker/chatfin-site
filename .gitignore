@@ -1,0 +1,12 @@
+/node_modules
+/.next
+/out
+.DS_Store
+*.log
+.env*
+
+# Root source duplicates (the app reads content/ and public/ instead)
+/home.html
+/products.html
+/usecases.html
+/logo/

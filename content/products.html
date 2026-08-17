@@ -1,0 +1,750 @@
+<!-- ChatFin PRODUCTS PAGE - Divi Code module content.
+     Do NOT add back DOCTYPE, html, head, body, title, meta description,
+     meta keywords, canonical, OG or Twitter tags. The SEO plugin writes
+     those into the real page head. Duplicating them here is what created
+     the second rel=canonical tag flagged by Semrush. -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "ChatFin AI Agents",
+  "url": "https://chatfin.ai/products/",
+  "description": "AI workflow agents for finance teams. Automates AP, AR, month-end close, reconciliations, accruals, FP&A and financial reporting with native ERP integration.",
+  "applicationCategory": "BusinessApplication",
+  "applicationSubCategory": "Finance and accounting automation",
+  "operatingSystem": "Web browser",
+  "image": "https://chatfin.ai/wp-content/uploads/2026/02/chatfin-svg-white.png",
+  "screenshot": "https://chatfin.ai/wp-content/uploads/2026/02/chatfin-svg-white.png",
+  "featureList": [
+    "AP automation",
+    "AR automation",
+    "Month-end close automation",
+    "Financial reconciliation AI",
+    "Accrual automation",
+    "FP&A automation",
+    "Financial reporting AI",
+    "ERP integration",
+    "Role-based access control",
+    "Audit logging"
+  ],
+  "offers": {
+    "@type": "Offer",
+    "url": "https://chatfin.ai/products/",
+    "price": "0",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "category": "Free demo"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://chatfin.ai/#organization",
+    "name": "ChatFin",
+    "url": "https://chatfin.ai/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://chatfin.ai/wp-content/uploads/2026/02/chatfin-svg-white.png"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/company/94238033",
+      "https://github.com/ChatFin-Labs"
+    ]
+  }
+}
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0A0F0D;--bg2:#0F1613;--bg3:#141C18;
+  --card:#111916;--card2:#162019;--elevated:#1A2520;
+  --green:#22C55E;--green-dark:#16A34A;
+  --green-text:#4ADE80;--green-sub:rgba(34,197,94,.08);
+  --border:rgba(255,255,255,.06);--border2:rgba(255,255,255,.12);
+  --border-g:rgba(34,197,94,.2);
+  --t1:#F1F5F2;--t2:#A3B5AA;--t3:#6B7F72;--t4:#4A5B52;
+  --red:#EF4444;--amber:#F59E0B;--blue:#60A5FA;
+  --sans:'DM Sans',system-ui,sans-serif;
+  --serif:'Source Serif 4',Georgia,serif;
+  --max:1180px;--pad:80px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--sans);background:var(--bg);color:var(--t1);-webkit-font-smoothing:antialiased;line-height:1.6;overflow-x:hidden}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 32px}
+a{color:var(--green);text-decoration:none}
+section{padding:var(--pad) 0;border-top:1px solid rgba(34,197,94,.04)}
+.eyebrow{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--green-text);display:block;text-align:center;margin-bottom:14px}
+h2.sec{font-family:var(--serif);font-size:clamp(28px,3.8vw,44px);font-weight:600;line-height:1.1;letter-spacing:-.03em;text-align:center;color:var(--t1);margin-bottom:12px}
+.sec-sub{font-size:16px;color:var(--t2);text-align:center;max-width:560px;margin:0 auto 56px;line-height:1.75}
+.fade-up{opacity:0;transform:translateY(24px)}
+.fade-up.visible{opacity:1;transform:translateY(0);transition:opacity .75s cubic-bezier(.22,1,.36,1),transform .75s cubic-bezier(.22,1,.36,1)}
+
+@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(34,197,94,.4)}50%{opacity:.5;box-shadow:0 0 0 6px rgba(34,197,94,0)}}
+@keyframes scan{0%{top:0%}100%{top:100%}}
+@keyframes blink{0%,85%,100%{opacity:1}90%{opacity:.2}}
+@keyframes flowRight{0%{left:-10%;opacity:0}20%{opacity:1}80%{opacity:1}100%{left:110%;opacity:0}}
+@keyframes countUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@keyframes barGrow{from{width:0}to{width:var(--w)}}
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+
+/* HERO */
+.hero{padding:var(--pad) 0 60px;position:relative;overflow:hidden;border-top:none}
+.hero::before{content:'';position:absolute;top:-20%;left:50%;transform:translateX(-50%);width:150%;height:90%;background:radial-gradient(ellipse 55% 40% at center,rgba(34,197,94,.05) 0%,transparent 70%);pointer-events:none}
+.hero-inner{text-align:center;max-width:800px;margin:0 auto;position:relative}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;border:1px solid var(--border-g);background:var(--green-sub);color:var(--green-text);border-radius:999px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:28px;text-align:center;white-space:normal;max-width:100%}
+.hero-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s ease-in-out infinite;flex-shrink:0}
+h1.hero-h{font-family:var(--serif);font-size:clamp(36px,5.5vw,60px);font-weight:600;line-height:1.08;letter-spacing:-.035em;color:var(--t1);margin-bottom:20px}
+h1.hero-h em{font-style:normal;color:var(--green)}
+.hero-sub{font-size:17px;color:var(--t2);max-width:600px;margin:0 auto 44px;line-height:1.75}
+.hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:64px}
+.btn-p{padding:13px 32px;border-radius:10px;font-weight:700;font-size:15px;border:none;cursor:pointer;background:var(--green);color:#0A0F0D;transition:all .25s;font-family:var(--sans);display:inline-flex;align-items:center;gap:8px;text-decoration:none}
+.btn-p:hover{background:var(--green-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(34,197,94,.3)}
+.btn-s{padding:13px 32px;border-radius:10px;font-weight:600;font-size:15px;background:rgba(34,197,94,.04);border:1px solid var(--border2);color:var(--t1);cursor:pointer;transition:all .25s;font-family:var(--sans);display:inline-flex;align-items:center;gap:8px;text-decoration:none}
+.btn-s:hover{background:var(--green-sub);border-color:var(--border-g)}
+
+/* HERO VISUAL, workflow nodes */
+.hero-visual{max-width:700px;margin:0 auto;padding:32px 40px;position:relative;overflow:hidden}
+.wf-nodes{display:flex;align-items:center;gap:0;justify-content:center}
+.wf-node{display:flex;flex-direction:column;align-items:center;gap:10px;padding:20px 24px;background:var(--bg3);border:1px solid var(--border);border-radius:14px;min-width:0;flex:1;transition:all .3s;position:relative}
+.wf-node:hover{border-color:var(--border-g);background:var(--elevated)}
+.wf-node-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:var(--green-sub);border:1px solid var(--border-g);font-size:20px;flex-shrink:0}
+.wf-node-label{font-size:13px;font-weight:600;color:var(--t2);text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.wf-connector{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(34,197,94,.3),transparent);position:relative;min-width:16px}
+.wf-connector::after{content:'';position:absolute;width:8px;height:8px;border-radius:50%;background:var(--green);top:50%;transform:translateY(-50%);animation:flowRight 2.5s linear infinite;opacity:0}
+.wf-connector:nth-child(2)::after{animation-delay:.8s}
+.wf-node.center{background:linear-gradient(135deg,rgba(34,197,94,.1),rgba(34,197,94,.04));border-color:var(--border-g)}
+.wf-node.center .wf-node-icon{background:rgba(34,197,94,.15);border-color:rgba(34,197,94,.3)}
+
+/* USE CASES */
+.uc-card{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;padding:var(--pad) 0;border-top:1px solid rgba(34,197,94,.04)}
+.uc-card:first-child{border-top:none}
+.uc-card.rev{direction:rtl}
+.uc-card.rev>*{direction:ltr}
+.uc-icon{width:52px;height:52px;border-radius:14px;border:1px solid var(--border-g);background:var(--green-sub);display:flex;align-items:center;justify-content:center;color:var(--green-text);margin-bottom:20px}
+.uc-card h3{font-family:var(--serif);font-size:22px;font-weight:600;color:var(--t1);margin-bottom:12px;letter-spacing:-.02em}
+.uc-card p{color:var(--t2);font-size:15px;line-height:1.7;margin-bottom:20px}
+.uc-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+.uc-list li{list-style:none;position:relative;padding-left:18px;font-size:13px;color:var(--t2);line-height:1.6}
+.uc-list li::before{content:'\2713';position:absolute;left:0;color:var(--green);font-weight:700;font-size:12px}
+
+/* INFOGRAPHIC PANELS */
+.infopanel{background:var(--card);border:1px solid var(--border);border-radius:18px;overflow:hidden;position:relative}
+
+/* Reconciliation infographic */
+.recon-panel{padding:24px}
+.recon-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;gap:8px;flex-wrap:wrap}
+.recon-hdr-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--t3)}
+.recon-hdr-badge{font-size:10px;font-weight:800;padding:3px 10px;border-radius:4px;background:rgba(34,197,94,.12);color:var(--green-text);border:1px solid rgba(34,197,94,.2);flex-shrink:0}
+.recon-cols{display:grid;grid-template-columns:1fr 32px 1fr;gap:0;align-items:start}
+.recon-col-hdr{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--t4);margin-bottom:8px;padding:0 8px}
+.recon-item{display:flex;align-items:center;gap:8px;padding:8px;border-radius:8px;margin-bottom:5px;font-size:12px;font-weight:500;border:1px solid transparent;transition:all .3s}
+.recon-item.matched{background:rgba(34,197,94,.05);border-color:rgba(34,197,94,.12);color:var(--t2)}
+.recon-item.exception{background:rgba(239,68,68,.05);border-color:rgba(239,68,68,.12);color:var(--t2)}
+.recon-item.pending{background:rgba(245,158,11,.04);border-color:rgba(245,158,11,.1);color:var(--t2)}
+.ri-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.ri-dot.g{background:var(--green)}
+.ri-dot.r{background:var(--red)}
+.ri-dot.a{background:var(--amber)}
+.recon-mid{display:flex;flex-direction:column;justify-content:center;gap:20px;padding-top:22px}
+.recon-line{display:flex;flex-direction:column;align-items:center;gap:2px}
+.recon-tick{width:14px;height:14px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:800;flex-shrink:0}
+.rt-g{background:rgba(34,197,94,.15);color:var(--green);border:1px solid rgba(34,197,94,.25)}
+.rt-r{background:rgba(239,68,68,.1);color:var(--red);border:1px solid rgba(239,68,68,.2)}
+.rt-a{background:rgba(245,158,11,.1);color:var(--amber);border:1px solid rgba(245,158,11,.2)}
+.recon-foot{display:flex;gap:8px;margin-top:14px;padding-top:14px;border-top:1px solid var(--border);flex-wrap:wrap}
+.recon-stat{flex:1;min-width:60px;text-align:center}
+.recon-stat-num{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--green)}
+.recon-stat-lbl{font-size:10px;color:var(--t3);text-transform:uppercase;letter-spacing:.06em}
+
+/* Document AI infographic */
+.doc-panel{padding:24px}
+.doc-wrapper{background:var(--elevated);border:1px solid var(--border2);border-radius:12px;padding:18px;position:relative;overflow:hidden}
+.doc-wrapper::before{content:'';position:absolute;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--green),transparent);top:var(--scan-pos,20%);animation:scan 3s ease-in-out infinite alternate;opacity:.4}
+.doc-field-row{display:flex;align-items:center;gap:10px;margin-bottom:9px}
+.doc-field-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--t3);width:60px;flex-shrink:0}
+.doc-field-val{flex:1;height:20px;background:var(--bg3);border:1px solid var(--border);border-radius:5px;display:flex;align-items:center;padding:0 8px;font-size:11px;color:var(--t2);font-weight:500;position:relative;overflow:hidden}
+.doc-field-val.extracted{background:rgba(34,197,94,.07);border-color:rgba(34,197,94,.2);color:var(--t1)}
+.doc-field-val.extracted::after{content:'';position:absolute;right:6px;width:8px;height:8px;border-radius:50%;background:var(--green);opacity:.8}
+.doc-extract-badge{display:flex;align-items:flex-start;gap:6px;margin-top:14px;padding:10px 12px;background:rgba(34,197,94,.07);border:1px solid rgba(34,197,94,.2);border-radius:8px;flex-wrap:wrap}
+.doc-extract-icon{font-size:14px;flex-shrink:0;margin-top:1px}
+.doc-extract-text{font-size:12px;font-weight:600;color:var(--green-text)}
+.doc-extract-count{font-size:11px;color:var(--t3);margin-left:auto}
+
+/* Compliance infographic */
+.compliance-panel{padding:24px}
+.comp-score-row{display:flex;align-items:center;gap:16px;margin-bottom:20px;padding:16px;background:rgba(34,197,94,.06);border:1px solid rgba(34,197,94,.15);border-radius:10px}
+.comp-score-ring{width:52px;height:52px;border-radius:50%;border:3px solid rgba(34,197,94,.2);display:flex;align-items:center;justify-content:center;position:relative;flex-shrink:0}
+.comp-score-ring::before{content:'';position:absolute;inset:0;border-radius:50%;border:3px solid var(--green);clip-path:polygon(50% 0,100% 0,100% 100%,0 100%,0 0)}
+.comp-score-num{font-family:var(--serif);font-size:18px;font-weight:700;color:var(--green)}
+.comp-score-lbl{font-size:13px;font-weight:600;color:var(--t1);margin-bottom:2px}
+.comp-score-sub{font-size:11px;color:var(--t3)}
+.comp-row{display:flex;align-items:center;gap:10px;margin-bottom:9px}
+.comp-cat{font-size:12px;font-weight:500;color:var(--t2);width:100px;flex-shrink:0}
+.comp-bar-bg{flex:1;height:6px;background:rgba(255,255,255,.05);border-radius:3px;overflow:hidden}
+.comp-bar{height:100%;border-radius:3px;background:var(--green)}
+.comp-pct{font-size:11px;font-weight:700;color:var(--green-text);width:36px;text-align:right;flex-shrink:0}
+.comp-status{font-size:9px;font-weight:800;padding:2px 7px;border-radius:4px;flex-shrink:0}
+.cs-ok{background:rgba(34,197,94,.12);color:var(--green-text)}
+.cs-warn{background:rgba(245,158,11,.12);color:var(--amber)}
+.comp-foot{display:flex;gap:6px;margin-top:14px;flex-wrap:wrap}
+.comp-foot-tag{font-size:10px;font-weight:700;padding:3px 9px;border-radius:4px;background:rgba(255,255,255,.05);color:var(--t3);border:1px solid var(--border)}
+
+/* Analytics infographic */
+.analytics-panel{padding:24px}
+.anl-metrics{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}
+.anl-metric{background:var(--elevated);border:1px solid var(--border);border-radius:10px;padding:14px 14px 10px}
+.anl-metric-num{font-family:var(--serif);font-size:26px;font-weight:700;color:var(--t1);line-height:1;margin-bottom:4px}
+.anl-metric-lbl{font-size:11px;color:var(--t3);margin-bottom:8px}
+.anl-delta{font-size:11px;font-weight:700;display:inline-flex;align-items:center;gap:3px;padding:2px 7px;border-radius:4px}
+.delta-up{background:rgba(34,197,94,.12);color:var(--green-text)}
+.delta-down{background:rgba(239,68,68,.1);color:var(--red)}
+.anl-chart{background:var(--elevated);border:1px solid var(--border);border-radius:10px;padding:14px;height:100px;position:relative;overflow:hidden}
+.anl-chart-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--t4);margin-bottom:8px}
+.anl-chart svg{width:100%;height:72px}
+
+/* Automation infographic */
+.auto-panel{padding:24px}
+.auto-flow{display:flex;flex-direction:column;gap:8px}
+.auto-step{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:10px;border:1px solid;transition:all .3s}
+.auto-step.trigger{background:rgba(34,197,94,.06);border-color:rgba(34,197,94,.18)}
+.auto-step.process{background:rgba(96,165,250,.04);border-color:rgba(96,165,250,.12)}
+.auto-step.gate{background:rgba(245,158,11,.04);border-color:rgba(245,158,11,.12)}
+.auto-step.done{background:rgba(34,197,94,.08);border-color:rgba(34,197,94,.22)}
+.auto-step-icon{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.si-g{background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.25)}
+.si-b{background:rgba(96,165,250,.12);border:1px solid rgba(96,165,250,.2)}
+.si-a{background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.18)}
+.auto-step-body{flex:1;min-width:0}
+.auto-step-title{font-size:12px;font-weight:700;color:var(--t1);margin-bottom:2px}
+.auto-step-meta{font-size:11px;color:var(--t3);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.auto-step-tag{font-size:9px;font-weight:800;padding:2px 8px;border-radius:4px;flex-shrink:0}
+.ast-g{background:rgba(34,197,94,.12);color:var(--green-text)}
+.ast-b{background:rgba(96,165,250,.1);color:#60A5FA}
+.ast-a{background:rgba(245,158,11,.1);color:var(--amber)}
+.auto-arrow{text-align:center;color:var(--t4);font-size:12px;line-height:1;margin:-2px 0}
+.auto-metrics{display:flex;gap:8px;margin-top:12px;padding-top:12px;border-top:1px solid var(--border);flex-wrap:wrap}
+.am-item{flex:1;min-width:60px;text-align:center}
+.am-num{font-family:var(--serif);font-size:20px;font-weight:700;color:var(--green)}
+.am-lbl{font-size:10px;color:var(--t3);text-transform:uppercase;letter-spacing:.05em}
+
+/* PRODUCTS GRID */
+.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.prod-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px 22px;transition:all .3s;position:relative;overflow:hidden}
+.prod-card:hover{border-color:var(--border2);background:var(--card2);transform:translateY(-3px)}
+.prod-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--green),transparent);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.prod-card:hover::before{transform:scaleX(1)}
+.prod-card.featured{border-color:var(--border2);background:linear-gradient(160deg,var(--card) 60%,rgba(34,197,94,.04))}
+.prod-hdr{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:18px}
+.prod-icon{width:48px;height:48px;border-radius:13px;background:var(--green-sub);border:1px solid var(--border-g);display:flex;align-items:center;justify-content:center;color:var(--green-text)}
+.prod-badge-pop{font-size:10px;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--green-sub);border:1px solid var(--border-g);color:var(--green-text);text-transform:uppercase;letter-spacing:.06em}
+.prod-card h3{font-size:16px;font-weight:600;color:var(--t1);margin-bottom:8px}
+.prod-card>p{font-size:13px;color:var(--t2);line-height:1.65;margin-bottom:18px}
+.prod-feats{list-style:none;margin-bottom:20px;display:flex;flex-direction:column;gap:7px}
+.prod-feats li{position:relative;padding-left:16px;font-size:12.5px;color:var(--t2);line-height:1.5}
+.prod-feats li::before{content:'\2713';position:absolute;left:0;color:var(--green);font-size:11px;font-weight:800}
+.prod-link{font-size:13px;font-weight:600;color:var(--t1);display:inline-flex;align-items:center;gap:5px;transition:gap .2s,color .2s}
+.prod-link:hover{gap:9px;color:var(--green-text)}
+.prod-mini-stat{margin-top:14px;padding-top:14px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.pms-num{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--green)}
+.pms-lbl{font-size:11px;color:var(--t3)}
+.pms-bar{width:80px;height:4px;background:rgba(255,255,255,.05);border-radius:2px;overflow:hidden}
+.pms-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--green),var(--green-dark))}
+
+/* HOW IT WORKS */
+.steps-track{max-width:800px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;position:relative}
+.steps-track::before{content:'';position:absolute;top:36px;left:calc(16.66% + 20px);right:calc(16.66% + 20px);height:1px;background:linear-gradient(90deg,var(--green),rgba(34,197,94,.3));z-index:0}
+.step-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px 22px;text-align:center;transition:all .3s;position:relative;z-index:1}
+.step-card:nth-child(2){margin:0 8px}
+.step-card:hover{border-color:var(--border-g);transform:translateY(-3px)}
+.step-num-circle{width:48px;height:48px;border-radius:50%;background:var(--green-sub);border:1px solid var(--border-g);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-family:var(--serif);font-size:20px;font-weight:700;color:var(--green-text)}
+.step-card h3{font-size:15px;font-weight:600;color:var(--t1);margin-bottom:10px}
+.step-card p{font-size:13px;color:var(--t2);line-height:1.65}
+.step-tags{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin-top:14px}
+.step-tag{font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;background:rgba(34,197,94,.08);color:var(--green-text);border:1px solid rgba(34,197,94,.12)}
+
+/* STATS */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px 22px;text-align:center;transition:all .3s;position:relative;overflow:hidden}
+.stat-card:hover{border-color:var(--border-g);transform:translateY(-3px)}
+.stat-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--green),transparent);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.stat-card:hover::after{transform:scaleX(1)}
+.stat-val{font-family:var(--serif);font-size:48px;font-weight:700;color:var(--green-text);line-height:1;margin-bottom:8px;letter-spacing:-.03em}
+.stat-lbl{font-size:13px;color:var(--t2);font-weight:500;line-height:1.4}
+.stat-sub{font-size:11px;color:var(--t3);margin-top:4px}
+
+/* BOTTOM CTA */
+.bottom-cta{padding:var(--pad) 0;border-top:1px solid rgba(34,197,94,.04);text-align:center}
+.bottom-cta h2{font-family:var(--serif);font-size:clamp(26px,3.5vw,38px);font-weight:600;letter-spacing:-.03em;color:var(--t1);margin-bottom:14px}
+.bottom-cta p{color:var(--t2);font-size:16px;margin-bottom:36px;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.7}
+.bottom-cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+/* MOBILE BREAKPOINTS */
+
+/* Tablet */
+@media(max-width:960px){
+  .os-grid,.uc-card{grid-template-columns:1fr;gap:40px}
+  .uc-card.rev{direction:ltr}
+  .prod-grid{grid-template-columns:repeat(2,1fr)}
+  .steps-track{grid-template-columns:1fr;gap:12px}
+  .steps-track::before{display:none}
+  .step-card:nth-child(2){margin:0}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .infopanel{width:100%;max-width:600px;margin:0 auto}
+}
+
+/* Mobile */
+@media(max-width:600px){
+  .wrap{padding:0 18px}
+  section{padding:56px 0}
+  .prod-grid,.stats-grid{grid-template-columns:1fr}
+
+  .hero{padding:48px 0 36px}
+  .hero-badge{font-size:11px;padding:7px 14px;letter-spacing:.06em}
+  .hero-sub{font-size:15px;margin-bottom:32px}
+  .hero-cta{gap:10px}
+  .hero-cta .btn-p,
+  .hero-cta .btn-s{width:100%;justify-content:center;padding:14px 20px}
+  .hero-visual{padding:20px 0}
+
+  .wf-nodes{flex-direction:column;gap:0}
+  .wf-connector{
+    width:1px;height:24px;
+    min-width:unset;
+    background:linear-gradient(180deg,transparent,rgba(34,197,94,.3),transparent)
+  }
+  .wf-connector::after{
+    top:-10%;left:50%;transform:translateX(-50%);
+    animation:none
+  }
+  .wf-node{width:100%;flex-direction:row;gap:12px;padding:14px 16px;border-radius:12px}
+  .wf-node-icon{width:36px;height:36px;font-size:17px;flex-shrink:0}
+  .wf-node-label{font-size:13px;text-align:left;white-space:normal}
+
+  .sec-sub{font-size:14px;margin-bottom:36px}
+
+  .stat-card{padding:20px 16px}
+  .stat-val{font-size:36px}
+
+  .recon-cols{grid-template-columns:1fr}
+  .recon-mid{display:none}
+  .recon-item{font-size:11px;padding:6px 8px}
+  .recon-panel{padding:16px}
+  .recon-hdr{margin-bottom:14px}
+  .recon-foot{gap:6px}
+  .recon-stat-num{font-size:18px}
+
+  .anl-metrics{grid-template-columns:1fr 1fr;gap:8px}
+  .anl-metric{padding:12px 10px 8px}
+  .anl-metric-num{font-size:20px}
+  .anl-chart{height:80px}
+  .analytics-panel{padding:16px}
+
+  .compliance-panel{padding:16px}
+  .comp-cat{width:80px;font-size:11px}
+  .comp-score-row{gap:12px;padding:12px}
+
+  .doc-panel{padding:16px}
+  .doc-field-row{margin-bottom:7px}
+
+  .auto-panel{padding:16px}
+  .auto-step{padding:10px 12px}
+  .auto-step-title{font-size:11px}
+  .auto-step-meta{font-size:10px}
+
+  .prod-card{padding:20px 16px}
+  .step-card{padding:20px 16px}
+
+  .bottom-cta-btns .btn-p,
+  .bottom-cta-btns .btn-s{width:100%;justify-content:center}
+}
+
+/* Very narrow */
+@media(max-width:380px){
+  .wrap{padding:0 14px}
+  h1.hero-h{font-size:30px}
+  .hero-badge{font-size:10px;padding:6px 12px}
+  .recon-item{font-size:11px;padding:6px}
+  .doc-field-lbl{width:50px;font-size:9px}
+  .comp-cat{width:70px}
+  .anl-metric-num{font-size:18px}
+}
+</style>
+
+<!-- HERO -->
+<section class="hero">
+<div class="wrap">
+  <div class="hero-inner fade-up">
+    <div class="hero-badge"><span class="hero-dot"></span>End-to-End Finance Automation</div>
+    <h1 class="hero-h">AI that runs <em>finance workflows</em></h1>
+    <p class="hero-sub">Intelligent agents that understand, automate, and optimize your entire financial operations stack, connected directly to your ERP.</p>
+    <div class="hero-cta">
+      <a href="#demo-form" class="btn-p">Book a Demo <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <a href="https://github.com/ChatFin-Labs" target="_blank" rel="noopener" class="btn-s">Explore Open Source</a>
+    </div>
+
+    <div class="hero-visual">
+      <div class="wf-nodes">
+        <div class="wf-node">
+          <div class="wf-node-icon">📥</div>
+          <div class="wf-node-label">Data Input</div>
+        </div>
+        <div class="wf-connector"></div>
+        <div class="wf-node center">
+          <div class="wf-node-icon">🤖</div>
+          <div class="wf-node-label">AI Processing</div>
+        </div>
+        <div class="wf-connector"></div>
+        <div class="wf-node">
+          <div class="wf-node-icon">⚙</div>
+          <div class="wf-node-label">ERP Execution</div>
+        </div>
+        <div class="wf-connector"></div>
+        <div class="wf-node">
+          <div class="wf-node-icon">✓</div>
+          <div class="wf-node-label">Automated Action</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- USE CASES -->
+<section>
+<div class="wrap">
+  <span class="eyebrow">AI Agents for Every Use Case</span>
+  <h2 class="sec">Purpose-built agents for <em style="font-style:normal;color:var(--green-text)">every finance scenario</em></h2>
+  <p class="sec-sub">Five core AI capabilities that cover the full scope of finance operations, from document processing to compliance monitoring.</p>
+
+  <!-- 1: Reconciliation AI -->
+  <div class="uc-card fade-up">
+    <div>
+      <div class="uc-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M8 10h8M8 14h5"/></svg></div>
+      <h3>Reconciliation AI</h3>
+      <p>Automatically match transactions across systems, flag exceptions, and resolve discrepancies without manual intervention. Works across bank statements, ledgers, and intercompany accounts.</p>
+      <ul class="uc-list">
+        <li>Multi-system transaction matching</li>
+        <li>Exception detection and prioritization</li>
+        <li>Auto-resolution rule engine</li>
+        <li>Continuous reconciliation monitoring</li>
+      </ul>
+    </div>
+    <div class="infopanel recon-panel">
+      <div class="recon-hdr">
+        <span class="recon-hdr-title">Live Reconciliation, November Close</span>
+        <span class="recon-hdr-badge">Running</span>
+      </div>
+      <div class="recon-cols">
+        <div>
+          <div class="recon-col-hdr">Bank Statement</div>
+          <div class="recon-item matched"><div class="ri-dot g"></div>INV-4821 · $12,400</div>
+          <div class="recon-item matched"><div class="ri-dot g"></div>INV-4822 · $8,750</div>
+          <div class="recon-item exception"><div class="ri-dot r"></div>INV-4823 · $3,200</div>
+          <div class="recon-item matched"><div class="ri-dot g"></div>INV-4824 · $21,050</div>
+          <div class="recon-item pending"><div class="ri-dot a"></div>INV-4825 · $6,800</div>
+        </div>
+        <div class="recon-mid">
+          <div class="recon-tick rt-g">✓</div>
+          <div class="recon-tick rt-g">✓</div>
+          <div class="recon-tick rt-r">!</div>
+          <div class="recon-tick rt-g">✓</div>
+          <div class="recon-tick rt-a">~</div>
+        </div>
+        <div>
+          <div class="recon-col-hdr">GL / ERP</div>
+          <div class="recon-item matched"><div class="ri-dot g"></div>$12,400 · Matched</div>
+          <div class="recon-item matched"><div class="ri-dot g"></div>$8,750 · Matched</div>
+          <div class="recon-item exception"><div class="ri-dot r"></div>$2,950 · Mismatch</div>
+          <div class="recon-item matched"><div class="ri-dot g"></div>$21,050 · Matched</div>
+          <div class="recon-item pending"><div class="ri-dot a"></div>Pending · In transit</div>
+        </div>
+      </div>
+      <div class="recon-foot">
+        <div class="recon-stat"><div class="recon-stat-num">847</div><div class="recon-stat-lbl">Matched</div></div>
+        <div class="recon-stat"><div class="recon-stat-num" style="color:var(--red)">3</div><div class="recon-stat-lbl">Exceptions</div></div>
+        <div class="recon-stat"><div class="recon-stat-num" style="color:var(--amber)">12</div><div class="recon-stat-lbl">Pending</div></div>
+        <div class="recon-stat"><div class="recon-stat-num">99.6<span style="font-size:14px">%</span></div><div class="recon-stat-lbl">Accuracy</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2: Document AI -->
+  <div class="uc-card rev fade-up">
+    <div>
+      <div class="uc-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+      <h3>Document AI</h3>
+      <p>Extract, classify, and process financial documents with AI precision. Handles invoices, remittances, contracts, and receipts automatically, then pushes structured data directly to your ERP.</p>
+      <ul class="uc-list">
+        <li>Automated invoice data extraction</li>
+        <li>Smart remittance capture and matching</li>
+        <li>Contract analysis and key term extraction</li>
+        <li>Multi-format document recognition</li>
+      </ul>
+    </div>
+    <div class="infopanel doc-panel">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--t3);margin-bottom:14px">AI Document Extraction</div>
+      <div class="doc-wrapper">
+        <div class="doc-field-row"><div class="doc-field-lbl">Vendor</div><div class="doc-field-val extracted">Acme Supplies Inc.</div></div>
+        <div class="doc-field-row"><div class="doc-field-lbl">Invoice #</div><div class="doc-field-val extracted">INV-20260441</div></div>
+        <div class="doc-field-row"><div class="doc-field-lbl">Date</div><div class="doc-field-val extracted">May 08, 2026</div></div>
+        <div class="doc-field-row"><div class="doc-field-lbl">Amount</div><div class="doc-field-val extracted">$24,800.00</div></div>
+        <div class="doc-field-row"><div class="doc-field-lbl">PO Match</div><div class="doc-field-val extracted">PO-8821 · 3-way ✓</div></div>
+        <div class="doc-field-row"><div class="doc-field-lbl">GL Code</div><div class="doc-field-val" style="background:rgba(245,158,11,.05);border-color:rgba(245,158,11,.15);color:var(--amber)">Needs review</div></div>
+      </div>
+      <div class="doc-extract-badge">
+        <span class="doc-extract-icon">⚡</span>
+        <span class="doc-extract-text">Extracted in 1.2s, pushed to NetSuite</span>
+        <span class="doc-extract-count">847 docs today</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3: Compliance AI -->
+  <div class="uc-card fade-up">
+    <div>
+      <div class="uc-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l7 4v6c0 5-3.5 9.74-7 10-3.5-.26-7-5-7-10V6l7-4z"/><path d="M9 11l2 2 4-4"/></svg></div>
+      <h3>Compliance AI</h3>
+      <p>Monitor regulatory compliance automatically with real-time policy enforcement and exception flagging. Tracks SOX controls, expense policies, vendor limits, and approval thresholds continuously.</p>
+      <ul class="uc-list">
+        <li>Automated regulatory monitoring</li>
+        <li>Policy enforcement and validation</li>
+        <li>Risk assessment and exception flagging</li>
+        <li>Compliance reporting automation</li>
+      </ul>
+    </div>
+    <div class="infopanel compliance-panel">
+      <div class="comp-score-row">
+        <div class="comp-score-ring"><div class="comp-score-num">94%</div></div>
+        <div>
+          <div class="comp-score-lbl">Overall Compliance Score</div>
+          <div class="comp-score-sub">4 controls monitored · Last updated 12 min ago</div>
+        </div>
+      </div>
+      <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--t4);margin-bottom:10px">Control Areas</div>
+      <div class="comp-row"><div class="comp-cat">SOX Controls</div><div class="comp-bar-bg"><div class="comp-bar" style="width:98%"></div></div><div class="comp-pct">98%</div><span class="comp-status cs-ok">OK</span></div>
+      <div class="comp-row"><div class="comp-cat">AP Policy</div><div class="comp-bar-bg"><div class="comp-bar" style="width:91%"></div></div><div class="comp-pct">91%</div><span class="comp-status cs-ok">OK</span></div>
+      <div class="comp-row"><div class="comp-cat">Expense Limits</div><div class="comp-bar-bg"><div class="comp-bar" style="width:78%;background:var(--amber)"></div></div><div class="comp-pct" style="color:var(--amber)">78%</div><span class="comp-status cs-warn">Review</span></div>
+      <div class="comp-row"><div class="comp-cat">Vendor Approval</div><div class="comp-bar-bg"><div class="comp-bar" style="width:96%"></div></div><div class="comp-pct">96%</div><span class="comp-status cs-ok">OK</span></div>
+      <div class="comp-foot">
+        <span class="comp-foot-tag">SOC 2 Ready</span><span class="comp-foot-tag">Audit Export</span><span class="comp-foot-tag">Real-time</span><span class="comp-foot-tag">24/7 Monitor</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4: Analytics AI -->
+  <div class="uc-card rev fade-up">
+    <div>
+      <div class="uc-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></div>
+      <h3>Analytics AI</h3>
+      <p>Transform raw financial data into actionable insights automatically. Generate variance narratives, identify trends, and surface anomalies before they become problems, without a single manual query.</p>
+      <ul class="uc-list">
+        <li>Automated variance analysis with AI narrative</li>
+        <li>Trend identification and anomaly detection</li>
+        <li>Predictive forecasting from live ERP data</li>
+        <li>Custom KPI monitoring and alerting</li>
+      </ul>
+    </div>
+    <div class="infopanel analytics-panel">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--t3);margin-bottom:14px">Finance Analytics Dashboard</div>
+      <div class="anl-metrics">
+        <div class="anl-metric">
+          <div class="anl-metric-num">$4.2M</div>
+          <div class="anl-metric-lbl">Revenue MTD</div>
+          <span class="anl-delta delta-up">▲ 12.4% vs plan</span>
+        </div>
+        <div class="anl-metric">
+          <div class="anl-metric-num">68.3%</div>
+          <div class="anl-metric-lbl">Gross Margin</div>
+          <span class="anl-delta delta-down">▼ 1.2% vs prior</span>
+        </div>
+        <div class="anl-metric">
+          <div class="anl-metric-num">$840K</div>
+          <div class="anl-metric-lbl">OpEx Actual</div>
+          <span class="anl-delta delta-up">▲ On budget</span>
+        </div>
+        <div class="anl-metric">
+          <div class="anl-metric-num">42d</div>
+          <div class="anl-metric-lbl">DSO (AR Days)</div>
+          <span class="anl-delta delta-down">▼ +3 vs target</span>
+        </div>
+      </div>
+      <div class="anl-chart">
+        <div class="anl-chart-lbl">Revenue Trend, Jan to May 2026</div>
+        <svg viewBox="0 0 300 60" preserveAspectRatio="none">
+          <defs><linearGradient id="rg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#22C55E" stop-opacity=".25"/><stop offset="100%" stop-color="#22C55E" stop-opacity="0"/></linearGradient></defs>
+          <path d="M0,55 L60,45 L120,38 L180,28 L240,20 L300,12 L300,60 L0,60 Z" fill="url(#rg)"/>
+          <path d="M0,55 L60,45 L120,38 L180,28 L240,20 L300,12" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="60" cy="45" r="3" fill="#22C55E"/>
+          <circle cx="120" cy="38" r="3" fill="#22C55E"/>
+          <circle cx="180" cy="28" r="3" fill="#22C55E"/>
+          <circle cx="240" cy="20" r="3" fill="#22C55E"/>
+          <circle cx="300" cy="12" r="3" fill="#22C55E"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5: Automation AI -->
+  <div class="uc-card fade-up">
+    <div>
+      <div class="uc-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 7h10v10H7z"/><path d="M9 9h6v6H9z"/></svg></div>
+      <h3>Automation AI</h3>
+      <p>Orchestrate end-to-end finance workflows with intelligent automation. From routine AP processing to complex multi-entity close coordination, agents handle the full workflow with human-in-the-loop controls.</p>
+      <ul class="uc-list">
+        <li>End-to-end workflow orchestration</li>
+        <li>Multi-system integration and handoffs</li>
+        <li>Human-in-the-loop approval gates</li>
+        <li>Exception routing and escalation</li>
+      </ul>
+    </div>
+    <div class="infopanel auto-panel">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--t3);margin-bottom:14px">AP Workflow, Live Execution</div>
+      <div class="auto-flow">
+        <div class="auto-step trigger">
+          <div class="auto-step-icon si-g">📥</div>
+          <div class="auto-step-body"><div class="auto-step-title">Invoice Received</div><div class="auto-step-meta">Acme Supplies · $24,800 · PDF</div></div>
+          <span class="auto-step-tag ast-g">DONE</span>
+        </div>
+        <div class="auto-arrow">↓</div>
+        <div class="auto-step process">
+          <div class="auto-step-icon si-b">🤖</div>
+          <div class="auto-step-body"><div class="auto-step-title">AI Extracts and Validates</div><div class="auto-step-meta">OCR, PO match, GL code, 3-way verify</div></div>
+          <span class="auto-step-tag ast-b">DONE</span>
+        </div>
+        <div class="auto-arrow">↓</div>
+        <div class="auto-step gate">
+          <div class="auto-step-icon si-a">👤</div>
+          <div class="auto-step-body"><div class="auto-step-title">Controller Approval</div><div class="auto-step-meta">Sarah K. · $24,800 threshold · Awaiting</div></div>
+          <span class="auto-step-tag ast-a">PENDING</span>
+        </div>
+        <div class="auto-arrow">↓</div>
+        <div class="auto-step process" style="opacity:.5">
+          <div class="auto-step-icon si-b">🏢</div>
+          <div class="auto-step-body"><div class="auto-step-title">Post to ERP</div><div class="auto-step-meta">NetSuite · AP ledger · Schedule payment</div></div>
+          <span class="auto-step-tag ast-b" style="opacity:.6">NEXT</span>
+        </div>
+      </div>
+      <div class="auto-metrics">
+        <div class="am-item"><div class="am-num">847</div><div class="am-lbl">Processed Today</div></div>
+        <div class="am-item"><div class="am-num">98%</div><div class="am-lbl">Auto-Approved</div></div>
+        <div class="am-item"><div class="am-num">2.1h</div><div class="am-lbl">Avg Cycle Time</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section>
+<div class="wrap">
+  <span class="eyebrow">How ChatFin Works</span>
+  <h2 class="sec">From data to decision in three steps</h2>
+  <p class="sec-sub">Connect your ERP, configure your workflows, and let AI agents execute, with human controls at every gate.</p>
+
+  <div class="steps-track fade-up">
+    <div class="step-card">
+      <div class="step-num-circle">1</div>
+      <h3>Connect Your Systems</h3>
+      <p>Authenticate ChatFin with your ERP through native connectors. SAP B1, NetSuite, Acumatica, JDE, Dynamics, and 12+ more, no middleware required.</p>
+      <div class="step-tags"><span class="step-tag">Native APIs</span><span class="step-tag">OAuth 2.0</span><span class="step-tag">~30 min setup</span></div>
+    </div>
+    <div class="step-card">
+      <div class="step-num-circle">2</div>
+      <h3>AI Processes and Executes</h3>
+      <p>Agents analyze your data, enforce your rules, and execute finance workflows directly inside the ERP, with approval gates at every critical step.</p>
+      <div class="step-tags"><span class="step-tag">Finance-grade</span><span class="step-tag">Stateful</span><span class="step-tag">Audit trail</span></div>
+    </div>
+    <div class="step-card">
+      <div class="step-num-circle">3</div>
+      <h3>Monitor and Improve</h3>
+      <p>Track agent performance, review exceptions, and expand automation as your team builds confidence. Accuracy improves every cycle.</p>
+      <div class="step-tags"><span class="step-tag">Live dashboard</span><span class="step-tag">Exception alerts</span><span class="step-tag">Continuous</span></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- DEMO FORM -->
+<span id="form" style="position:relative;display:block;height:0"></span>
+<section id="demo-form">
+<div class="wrap">
+  <div class="cta-wrap">
+    <div>
+      <span class="cta-eyebrow">Get Started</span>
+      <h2 class="cta-sec">See ChatFin in Action</h2>
+      <p class="cta-intro">Book a personalized demo and see AI agents running on your actual finance workflows, not a scripted slide deck.</p>
+      <div class="cta-feats">
+        <div class="cta-feat"><div class="cta-feat-icon">✓</div><p>See AI agents on your live ERP data</p></div>
+        <div class="cta-feat"><div class="cta-feat-icon">✓</div><p>Custom demo for your specific workflows</p></div>
+        <div class="cta-feat"><div class="cta-feat-icon">✓</div><p>No commitment required</p></div>
+      </div>
+    </div>
+    <div class="form-box">
+      <div class="form-title">Request a Demo</div>
+      <span class="form-eyebrow">Confidential & Private</span>
+      [wpforms id="9748"]
+    </div>
+  </div>
+</div>
+
+<style>
+  #demo-form{background:#fff;padding:96px 0 120px;border-top:none}
+  #demo-form .wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+  #demo-form .cta-eyebrow{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:#16A34A;display:block;text-align:left;margin-bottom:14px}
+  #demo-form .cta-sec{font-family:'Source Serif 4',Georgia,serif;font-size:clamp(28px,3.8vw,40px);font-weight:600;line-height:1.1;letter-spacing:-.03em;text-align:left;color:#0d1410;margin-bottom:12px}
+  #demo-form .cta-intro{font-size:15px;color:#374151;line-height:1.75;margin-bottom:8px}
+  #demo-form .cta-wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:center}
+  #demo-form .cta-feats{display:flex;flex-direction:column;gap:16px;margin-top:28px}
+  #demo-form .cta-feat{display:flex;align-items:flex-start;gap:12px}
+  #demo-form .cta-feat-icon{width:24px;height:24px;background:rgba(22,163,74,.1);border:1px solid rgba(22,163,74,.25);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#16A34A;font-weight:700;flex-shrink:0;font-size:12px}
+  #demo-form .cta-feat p{font-size:14px;color:#374151;margin:0;line-height:1.6}
+  #demo-form .form-box{background:#fff;border:2px solid #22C55E;border-radius:6px;padding:40px 36px;box-shadow:0 24px 64px rgba(0,0,0,.2),0 8px 24px rgba(0,0,0,.12),0 2px 8px rgba(0,0,0,.08);position:relative}
+  #demo-form .form-box::before{display:none}
+  #demo-form .form-title{font-family:'Source Serif 4',Georgia,serif;font-size:22px;font-weight:400;color:#0d1410;margin-bottom:4px;letter-spacing:-.01em}
+  #demo-form .form-eyebrow{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:#16A34A;margin-bottom:28px;display:block}
+  #demo-form .form-box label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#1a1a1a;display:block;margin-bottom:6px}
+  #demo-form .form-box input,#demo-form .form-box textarea,#demo-form .form-box select{width:100%;padding:12px 0;background:transparent;border:none;border-bottom:1px solid rgba(0,0,0,.2);border-radius:0;color:#0d1410;font-size:14px;font-family:'DM Sans',sans-serif;outline:none;transition:border-color .2s}
+  #demo-form .form-box input:focus,#demo-form .form-box textarea:focus{border-bottom-color:#22C55E;box-shadow:none}
+  #demo-form .form-box input::placeholder,#demo-form .form-box textarea::placeholder{color:rgba(0,0,0,.5);font-size:13px}
+  #demo-form .form-box textarea{resize:none;min-height:72px;line-height:1.6}
+  #demo-form .form-box .wpforms-container{margin:0!important;background:transparent!important}
+  #demo-form .form-box .wpforms-field{margin-bottom:20px!important;padding:0!important}
+  #demo-form .form-box .wpforms-field-label{font-size:10px!important;font-weight:700!important;text-transform:uppercase!important;letter-spacing:.1em!important;color:#1a1a1a!important;margin-bottom:6px!important;display:block!important}
+  #demo-form .form-box .wpforms-field input,#demo-form .form-box .wpforms-field textarea,#demo-form .form-box .wpforms-field select{width:100%!important;padding:12px 0!important;background:transparent!important;border:none!important;border-bottom:1px solid rgba(0,0,0,.2)!important;border-radius:0!important;color:#0d1410!important;font-size:14px!important;font-family:'DM Sans',sans-serif!important;outline:none!important;transition:border-color .2s!important;box-shadow:none!important;height:auto!important;max-width:100%!important;box-sizing:border-box!important}
+  #demo-form .form-box .wpforms-field input:focus,#demo-form .form-box .wpforms-field textarea:focus{border-bottom-color:#22C55E!important;box-shadow:none!important}
+  #demo-form .form-box .wpforms-submit-container{margin-top:8px!important;padding:0!important}
+  #demo-form .form-box .wpforms-submit{width:100%!important;padding:15px!important;background:transparent!important;color:#22C55E!important;border:1px solid #22C55E!important;border-radius:2px!important;font-size:12px!important;font-weight:700!important;letter-spacing:.1em!important;text-transform:uppercase!important;cursor:pointer!important;font-family:'DM Sans',sans-serif!important;transition:all .25s!important;height:auto!important}
+  #demo-form .form-box .wpforms-submit:hover{background:#22C55E!important;color:#0A0F0D!important}
+  #demo-form .form-box .wpforms-hidden{display:none!important}
+  @media(max-width:900px){#demo-form .cta-wrap{grid-template-columns:1fr;gap:40px}}
+  @media(max-width:640px){
+    #demo-form{padding:60px 0 72px}
+    #demo-form .wrap{padding:0 18px}
+    #demo-form .form-box{padding:32px 20px}
+  }
+</style>
+</section>
+
+<script>
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, {threshold:0.1});
+document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+
+document.addEventListener('click', function (e) {
+  var a = e.target.closest('a[href="#demo-form"], a[href="#form"]');
+  if (!a) return;
+  var target = document.getElementById('demo-form');
+  if (!target) return;
+  e.preventDefault();
+  target.scrollIntoView({ behavior: 'auto', block: 'start' });
+  history.replaceState(null, '', '#demo-form');
+});
+if (location.hash === '#form' || location.hash === '#demo-form') {
+  window.addEventListener('load', function () {
+    var t = document.getElementById('demo-form');
+    if (t) t.scrollIntoView({ behavior: 'auto', block: 'start' });
+  });
+}
+</script>

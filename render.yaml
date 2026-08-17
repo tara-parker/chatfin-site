@@ -1,0 +1,10 @@
+# Render: New > Blueprint > point at this repo. Serves the static export.
+services:
+  - type: web
+    name: chatfin-website
+    runtime: static
+    buildCommand: npm ci && npm run build
+    staticPublishPath: ./out
+    envVars:
+      - key: NODE_VERSION
+        value: "20"

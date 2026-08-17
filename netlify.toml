@@ -1,0 +1,7 @@
+# Netlify: connect this repo, no extra settings needed.
+[build]
+  command = "npm run build"
+  publish = "out"
+
+[build.environment]
+  NODE_VERSION = "20"

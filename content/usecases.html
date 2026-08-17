@@ -1,0 +1,733 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Cormorant+Garamond:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-primary:#0A0F0D;
+    --bg-secondary:#0F1613;
+    --bg-tertiary:#141C18;
+    --bg-card:#111916;
+    --bg-card-hover:#162019;
+    --bg-elevated:#1A2520;
+    --green:#22C55E;
+    --green-dark:#16A34A;
+    --green-darker:#15803D;
+    --green-muted:#166534;
+    --green-subtle:rgba(34,197,94,.08);
+    --green-glow:rgba(34,197,94,.15);
+    --green-text:#4ADE80;
+    --text-primary:#F1F5F2;
+    --text-secondary:#A3B5AA;
+    --text-muted:#6B7F72;
+    --text-dim:#4A5B52;
+    --border:rgba(255,255,255,.06);
+    --border-hover:rgba(255,255,255,.12);
+    --border-green:rgba(34,197,94,.2);
+    --font-body:'DM Sans', system-ui, sans-serif;
+    --font-serif:'Source Serif 4', Georgia, serif;
+    --font-display:'Cormorant Garamond', Georgia, serif;
+    --max-w:1180px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{background:var(--bg-primary)}
+  body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-primary);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .wrap{max-width:var(--max-w);margin:0 auto;padding:0 32px}
+  .btn{background:var(--green);color:var(--bg-primary);padding:12px 24px;border-radius:10px;font-size:14px;font-weight:600;text-decoration:none;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:all .25s ease;font-family:var(--font-body)}
+  .btn:hover{background:var(--green-dark);transform:translateY(-1px);box-shadow:0 8px 32px rgba(34,197,94,.3)}
+  section{padding:100px 0}
+  .sec-head{max-width:720px;margin-bottom:56px}
+  h2{font-family:var(--font-serif);font-size:clamp(32px,3.5vw,44px);font-weight:600;letter-spacing:-.025em;line-height:1.1;margin-bottom:16px;color:var(--text-primary)}
+  h2 em{font-style:normal;color:var(--green)}
+  .sec-head p{font-size:17px;color:var(--text-secondary);max-width:600px;line-height:1.7}
+
+  /* ── CARD ── */
+  .dd-list{display:flex;flex-direction:column;gap:12px}
+  .dd{
+    background:var(--bg-card);
+    border:1px solid var(--border);
+    border-radius:16px;
+    overflow:hidden;
+    transition:border-color .4s ease, box-shadow .4s ease, background .4s ease;
+    border-left:3px solid var(--green);
+    position:relative;
+  }
+  .dd::before{content:'';position:absolute;top:0;right:0;width:120px;height:120px;background:radial-gradient(circle,rgba(34,197,94,.08) 0%,transparent 70%);pointer-events:none}
+
+  /* Active state - used for both hover (desktop) and .is-open (mobile touch) */
+  .dd:hover,
+  .dd.is-open{
+    border-color:var(--border-green);
+    background:var(--bg-elevated);
+    box-shadow:0 24px 60px rgba(34,197,94,.1),0 0 80px rgba(34,197,94,.08);
+  }
+
+  /* HEADER - clickable on mobile */
+  .dd-header{
+    padding:28px 32px;
+    display:grid;
+    grid-template-columns:auto 1fr auto auto;
+    gap:16px;
+    align-items:center;
+    /* FIX: make header tappable */
+    cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
+    user-select:none;
+    position:relative;
+    z-index:2;
+  }
+  .dd-num{
+    font-family:var(--font-serif);
+    font-size:40px;
+    font-weight:600;
+    letter-spacing:-.02em;
+    line-height:1;
+    opacity:.3;
+    transition:opacity .4s ease;
+    color:var(--green);
+    /* FIX: don't let it shrink and push other columns */
+    flex-shrink:0;
+  }
+  .dd:hover .dd-num,
+  .dd.is-open .dd-num{opacity:1}
+
+  .dd-title-wrap{min-width:0} /* FIX: allow text column to shrink */
+  .dd-title{font-family:var(--font-serif);font-size:22px;font-weight:600;letter-spacing:-.02em;line-height:1.2;color:var(--text-primary)}
+  .dd-sub{font-size:14px;color:var(--text-secondary);margin-top:4px;letter-spacing:.01em}
+
+  .dd-count{
+    font-family:var(--font-body);font-size:12px;font-weight:600;
+    padding:8px 16px;border-radius:8px;letter-spacing:.02em;
+    background:var(--green-subtle);color:var(--green-text);
+    border:1px solid var(--border-green);
+    white-space:nowrap;flex-shrink:0
+  }
+  .dd-toggle{
+    width:36px;height:36px;flex-shrink:0;
+    border:1.5px solid var(--border-hover);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:18px;color:var(--text-muted);
+    transition:all .4s cubic-bezier(.4,0,.2,1);
+  }
+  .dd:hover .dd-toggle,
+  .dd.is-open .dd-toggle{
+    background:var(--green);color:var(--bg-primary);
+    border-color:var(--green);transform:rotate(45deg);
+  }
+
+  /* ── SMOOTH EXPAND (CSS hover for desktop, class for mobile) ── */
+  .dd-expand{
+    display:grid;
+    grid-template-rows:0fr;
+    transition:grid-template-rows .55s cubic-bezier(.25,.1,.25,1);
+  }
+  /* Desktop: hover */
+  .dd:hover .dd-expand{
+    grid-template-rows:1fr;
+  }
+  /* Mobile/touch: JS-toggled class */
+  .dd.is-open .dd-expand{
+    grid-template-rows:1fr;
+  }
+  .dd-expand-inner{overflow:hidden}
+
+  /* ── BODY CONTENT ── */
+  .dd-body{
+    border-top:1px solid var(--border);
+    margin:0 32px;
+    padding:28px 0 28px;
+    display:grid;
+    grid-template-columns:1fr 1.4fr;
+    grid-template-areas:"narrative workflows" "impact impact";
+    gap:28px;
+    opacity:0;
+    transform:translateY(-6px);
+    transition:opacity .4s ease .12s, transform .4s ease .12s;
+    position:relative;z-index:2;
+  }
+  .dd:hover .dd-body,
+  .dd.is-open .dd-body{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  /* Narrative */
+  .dd-narrative{grid-area:narrative;display:flex;flex-direction:column;gap:18px}
+  .dd-block h4{font-family:var(--font-body);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px;color:var(--green-text)}
+  .dd-block p{font-size:14px;line-height:1.65;color:var(--text-secondary)}
+
+  /* Workflows */
+  .dd-workflows{grid-area:workflows}
+  .dd-workflows h4{font-family:var(--font-body);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--text-muted);margin-bottom:14px}
+  .wf-list{display:flex;flex-wrap:wrap;gap:8px}
+  .wf-item{display:flex;align-items:center;gap:9px;padding:10px 16px;border-radius:10px;font-size:13px;font-weight:500;color:var(--text-primary);background:var(--green-subtle);border:1px solid var(--border-green);transition:all .25s;cursor:default}
+  .wf-item:hover{transform:translateY(-1px);background:rgba(34,197,94,.14);border-color:rgba(34,197,94,.3)}
+  .wf-dot{width:5px;height:5px;border-radius:50%;background:var(--green);flex-shrink:0}
+
+  /* Impact */
+  .dd-impact{grid-area:impact;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding-top:24px;border-top:1px solid var(--border)}
+  .imp{padding:18px 16px;border-radius:12px;background:var(--green-subtle);border:1px solid var(--border-green);transition:all .25s}
+  .imp:hover{background:rgba(34,197,94,.14);border-color:rgba(34,197,94,.3)}
+  .imp-num{font-family:var(--font-serif);font-size:28px;font-weight:600;letter-spacing:-.02em;line-height:1;margin-bottom:6px;color:var(--green)}
+  .imp-label{font-size:12px;color:var(--text-secondary);line-height:1.4}
+
+  /* ── FOOTER ── */
+  .site-footer{border-top:1px solid var(--border);padding:48px 32px;text-align:center;background:var(--bg-primary)}
+  .site-footer p{font-size:13px;color:var(--text-muted);margin:0}
+  .site-footer a{color:var(--text-muted);text-decoration:none;transition:color .2s;margin:0 8px}
+  .site-footer a:hover{color:var(--text-secondary)}
+
+  /* ═══════════════════════════════════════════
+     MOBILE BREAKPOINTS
+     ═══════════════════════════════════════════ */
+
+  /* Tablet */
+  @media(max-width:980px){
+    .dd-body{
+      grid-template-columns:1fr;
+      grid-template-areas:"narrative" "workflows" "impact";
+      gap:24px
+    }
+    .dd-impact{grid-template-columns:1fr 1fr}
+  }
+
+  /* Large mobile */
+  @media(max-width:768px){
+    .dd-impact{grid-template-columns:repeat(2,1fr)}
+  }
+
+  /* Mobile */
+  @media(max-width:640px){
+    section{padding:56px 0}
+    .wrap{padding:0 18px}
+
+    .sec-head{margin-bottom:36px}
+    .sec-head p{font-size:15px}
+    h2{font-size:28px}
+
+    /* Card header: number left, text middle, toggle right - clean 3-col */
+    .dd-header{
+      padding:20px 18px;
+      gap:14px;
+      grid-template-columns:auto 1fr auto;
+    }
+    /* Number: smaller but still prominent */
+    .dd-num{
+      font-size:32px;
+      opacity:.25;
+      min-width:44px;
+    }
+    .dd:hover .dd-num,
+    .dd.is-open .dd-num{opacity:1}
+
+    .dd-title{font-size:16px;line-height:1.25;font-weight:600}
+    .dd-sub{font-size:12px;margin-top:3px;color:var(--text-muted)}
+
+    /* Hide count badge - shown in body instead */
+    .dd-count{display:none}
+
+    /* Toggle: clean circle, same size as desktop feel */
+    .dd-toggle{
+      width:34px;height:34px;
+      font-size:20px;
+      border-width:1.5px;
+      /* Align to center of the number row */
+      align-self:center;
+    }
+
+    /* Body */
+    .dd-body{
+      margin:0 16px;
+      padding:20px 0;
+      gap:20px
+    }
+    .dd-body p,.dd-block p{font-size:13px}
+    .dd-workflows h4,.dd-block h4{font-size:10px}
+
+    /* Workflow pills */
+    .wf-list{gap:6px}
+    .wf-item{padding:8px 12px;font-size:12px;gap:7px}
+
+    /* Impact grid - 1-col on mobile */
+    .dd-impact{
+      grid-template-columns:1fr;
+      gap:10px;
+      /* FIX: extend to edges since dd-body has margin */
+      margin-left:-16px;margin-right:-16px;
+      padding:16px 16px 0;
+    }
+    .imp{padding:14px 16px;border-radius:10px;display:flex;align-items:center;gap:14px}
+    .imp-num{font-size:24px;margin-bottom:0;min-width:70px}
+    .imp-label{font-size:12px}
+
+    /* Footer */
+    .site-footer{padding:32px 18px}
+    .site-footer p{font-size:12px}
+    .site-footer a{margin:0 6px}
+  }
+
+  /* Very narrow */
+  @media(max-width:380px){
+    .dd-header{padding:16px 14px;gap:10px}
+    .dd-num{font-size:26px;min-width:36px}
+    .dd-title{font-size:14px}
+    .dd-sub{display:none}
+    .dd-toggle{width:30px;height:30px;font-size:18px}
+    .imp-num{font-size:20px;min-width:58px}
+  }
+</style>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>AI Agents That Execute <em>Your Finance Workflows</em></h2>
+      <p>End-to-end execution with accuracy, control, and trust.</p>
+    </div>
+    <div class="dd-list">
+
+      <!-- 01 CLOSE & CONTROLLERSHIP -->
+      <div class="dd theme-blue">
+        <div class="dd-header">
+          <span class="dd-num">01</span>
+          <div class="dd-title-wrap"><div class="dd-title">Close & Controllership</div><div class="dd-sub">Month-end close, reconciliations, accruals, variance analysis</div></div>
+          <span class="dd-count">10 workflows</span>
+          <span class="dd-toggle" aria-label="Expand">+</span>
+        </div>
+        <div class="dd-expand"><div class="dd-expand-inner">
+          <div class="dd-body">
+            <div class="dd-narrative">
+              <div class="dd-block"><h4>Problem</h4><p>Close slips every month because checklists, recs, accruals, and variance commentary are all manual and scattered across spreadsheets and Slack.</p></div>
+              <div class="dd-block"><h4>How it works</h4><p>Agent orchestrates your checklist, runs recs overnight, calculates accruals from history, drafts flux commentary, and predicts close date daily.</p></div>
+              <div class="dd-block"><h4>Output</h4><p>Live close dashboard. Completed recs with exceptions. Staged accrual JEs. Variance memos. Audit trail on every task.</p></div>
+            </div>
+            <div class="dd-workflows">
+              <h4>Workflows covered</h4>
+              <div class="wf-list">
+                <div class="wf-item"><span class="wf-dot"></span>Close orchestration</div>
+                <div class="wf-item"><span class="wf-dot"></span>Task management & checklists</div>
+                <div class="wf-item"><span class="wf-dot"></span>Journal entry creation & validation</div>
+                <div class="wf-item"><span class="wf-dot"></span>Accruals & provisions</div>
+                <div class="wf-item"><span class="wf-dot"></span>Balance sheet reconciliation</div>
+                <div class="wf-item"><span class="wf-dot"></span>Bank reconciliation</div>
+                <div class="wf-item"><span class="wf-dot"></span>Intercompany reconciliation</div>
+                <div class="wf-item"><span class="wf-dot"></span>Variance / flux analysis</div>
+                <div class="wf-item"><span class="wf-dot"></span>Close readiness tracking</div>
+                <div class="wf-item"><span class="wf-dot"></span>Exception monitoring</div>
+              </div>
+            </div>
+            <div class="dd-impact">
+              <div class="imp"><div class="imp-num">3 days</div><div class="imp-label">Median close, down from 7 to 10</div></div>
+              <div class="imp"><div class="imp-num">−40%</div><div class="imp-label">Controller time chasing status</div></div>
+              <div class="imp"><div class="imp-num">95%</div><div class="imp-label">Bank transactions auto-matched</div></div>
+              <div class="imp"><div class="imp-num">100%</div><div class="imp-label">Tasks with audit-ready evidence</div></div>
+            </div>
+          </div>
+        </div></div>
+      </div>
+
+      <!-- 02 PROCURE TO PAY -->
+      <div class="dd theme-green">
+        <div class="dd-header">
+          <span class="dd-num">02</span>
+          <div class="dd-title-wrap"><div class="dd-title">Procure to Pay (AP & Vendor Spend)</div><div class="dd-sub">Invoice capture, matching, validation, payment controls</div></div>
+          <span class="dd-count">10 workflows</span>
+          <span class="dd-toggle" aria-label="Expand">+</span>
+        </div>
+        <div class="dd-expand"><div class="dd-expand-inner">
+          <div class="dd-body">
+            <div class="dd-narrative">
+              <div class="dd-block"><h4>Problem</h4><p>At scale, AP spends most time on the 15% of invoices that don't match. Duplicates slip through. GL coding is inconsistent. Freight goes unaudited.</p></div>
+              <div class="dd-block"><h4>How it works</h4><p>OCR extracts invoice data. Agent matches PO + GR, checks tolerances, auto-posts clean matches, blocks duplicates against 18 months of history, and fraud-screens payment proposals.</p></div>
+              <div class="dd-block"><h4>Output</h4><p>Auto-posted invoices with audit trail. Exception queue with AI resolutions. Blocked duplicates. Vendor dashboard. Validated payment proposals. Freight audit report.</p></div>
+            </div>
+            <div class="dd-workflows">
+              <h4>Workflows covered</h4>
+              <div class="wf-list">
+                <div class="wf-item"><span class="wf-dot"></span>Invoice capture & extraction</div>
+                <div class="wf-item"><span class="wf-dot"></span>Invoice validation (PO / non-PO)</div>
+                <div class="wf-item"><span class="wf-dot"></span>3-way matching (PO, GRN, invoice)</div>
+                <div class="wf-item"><span class="wf-dot"></span>Duplicate invoice detection</div>
+                <div class="wf-item"><span class="wf-dot"></span>Vendor master validation</div>
+                <div class="wf-item"><span class="wf-dot"></span>GL coding & classification</div>
+                <div class="wf-item"><span class="wf-dot"></span>Payment proposal validation</div>
+                <div class="wf-item"><span class="wf-dot"></span>Vendor spend analytics</div>
+                <div class="wf-item"><span class="wf-dot"></span>Contract / rate validation</div>
+                <div class="wf-item"><span class="wf-dot"></span>Freight invoice audit</div>
+              </div>
+            </div>
+            <div class="dd-impact">
+              <div class="imp"><div class="imp-num">78%</div><div class="imp-label">Invoices auto-posted, no human touch</div></div>
+              <div class="imp"><div class="imp-num">2 min</div><div class="imp-label">Exception resolution, from ~12 min</div></div>
+              <div class="imp"><div class="imp-num">~0</div><div class="imp-label">Duplicate payments post-deployment</div></div>
+              <div class="imp"><div class="imp-num">$180K</div><div class="imp-label">Recovered in first quarter</div></div>
+            </div>
+          </div>
+        </div></div>
+      </div>
+
+      <!-- 03 ORDER TO CASH -->
+      <div class="dd theme-amber">
+        <div class="dd-header">
+          <span class="dd-num">03</span>
+          <div class="dd-title-wrap"><div class="dd-title">Order to Cash (AR & Revenue)</div><div class="dd-sub">Cash application, collections, disputes, revenue validation</div></div>
+          <span class="dd-count">9 workflows</span>
+          <span class="dd-toggle" aria-label="Expand">+</span>
+        </div>
+        <div class="dd-expand"><div class="dd-expand-inner">
+          <div class="dd-body">
+            <div class="dd-narrative">
+              <div class="dd-block"><h4>Problem</h4><p>Payments arrive without remittance. Dunning is one-size-fits-all. Disputes sit unclassified. Credit exposure tracked in a stale spreadsheet.</p></div>
+              <div class="dd-block"><h4>How it works</h4><p>Agent matches payments to invoices using AI-read remittance, handles partials and deductions. Prioritizes collections by risk. Sends smart dunning. Auto-categorizes disputes. Validates revenue against contracts.</p></div>
+              <div class="dd-block"><h4>Output</h4><p>Applied cash with match evidence. Prioritized collections worklist. Dispute dashboard. Revenue validation report. Credit scorecards with early warnings.</p></div>
+            </div>
+            <div class="dd-workflows">
+              <h4>Workflows covered</h4>
+              <div class="wf-list">
+                <div class="wf-item"><span class="wf-dot"></span>Invoice generation validation</div>
+                <div class="wf-item"><span class="wf-dot"></span>Cash application (remittance matching)</div>
+                <div class="wf-item"><span class="wf-dot"></span>Collections tracking & prioritization</div>
+                <div class="wf-item"><span class="wf-dot"></span>Customer aging analysis</div>
+                <div class="wf-item"><span class="wf-dot"></span>Dispute & deduction tracking</div>
+                <div class="wf-item"><span class="wf-dot"></span>Revenue validation</div>
+                <div class="wf-item"><span class="wf-dot"></span>Contract-based billing checks</div>
+                <div class="wf-item"><span class="wf-dot"></span>Credit risk monitoring</div>
+                <div class="wf-item"><span class="wf-dot"></span>AR anomaly detection</div>
+              </div>
+            </div>
+            <div class="dd-impact">
+              <div class="imp"><div class="imp-num">11 days</div><div class="imp-label">DSO reduction, 6-month avg</div></div>
+              <div class="imp"><div class="imp-num">85%</div><div class="imp-label">Payments auto-matched on Day 1</div></div>
+              <div class="imp"><div class="imp-num">3x</div><div class="imp-label">Faster dispute resolution</div></div>
+              <div class="imp"><div class="imp-num">−60%</div><div class="imp-label">Manual cash app effort</div></div>
+            </div>
+          </div>
+        </div></div>
+      </div>
+
+      <!-- 04 INVENTORY & LOGISTICS -->
+      <div class="dd theme-purple">
+        <div class="dd-header">
+          <span class="dd-num">04</span>
+          <div class="dd-title-wrap"><div class="dd-title">Inventory & Logistics</div><div class="dd-sub">SIT tracking, inventory recs, freight & transporter performance</div></div>
+          <span class="dd-count">9 workflows</span>
+          <span class="dd-toggle" aria-label="Expand">+</span>
+        </div>
+        <div class="dd-expand"><div class="dd-expand-inner">
+          <div class="dd-body">
+            <div class="dd-narrative">
+              <div class="dd-block"><h4>Problem</h4><p>SIT sits unreconciled for days. GI/GR don't match across plants. Inter-plant transfers get lost. Shipment delays surface after the complaint. Freight costs go unaudited.</p></div>
+              <div class="dd-block"><h4>How it works</h4><p>Agent reconciles inventory quantities continuously, tracks inter-plant transfers end-to-end, monitors transporter SLAs, compares freight invoices to contracted rates, and flags aging stock.</p></div>
+              <div class="dd-block"><h4>Output</h4><p>SIT dashboard with exceptions. GI vs. GR mismatch report. Transfer tracker with ETAs. Transporter scorecard. Freight variance report. Inventory aging with obsolescence scoring.</p></div>
+            </div>
+            <div class="dd-workflows">
+              <h4>Workflows covered</h4>
+              <div class="wf-list">
+                <div class="wf-item"><span class="wf-dot"></span>Stock in transit (SIT) tracking</div>
+                <div class="wf-item"><span class="wf-dot"></span>Goods issue vs goods receipt tracking</div>
+                <div class="wf-item"><span class="wf-dot"></span>Inventory reconciliation</div>
+                <div class="wf-item"><span class="wf-dot"></span>Inter-plant transfer tracking</div>
+                <div class="wf-item"><span class="wf-dot"></span>Shipment delay detection</div>
+                <div class="wf-item"><span class="wf-dot"></span>Transporter performance tracking</div>
+                <div class="wf-item"><span class="wf-dot"></span>Freight cost monitoring</div>
+                <div class="wf-item"><span class="wf-dot"></span>Inventory aging analysis</div>
+                <div class="wf-item"><span class="wf-dot"></span>Exception alerts (missing / delayed)</div>
+              </div>
+            </div>
+            <div class="dd-impact">
+              <div class="imp"><div class="imp-num">90%</div><div class="imp-label">SIT reconciled within 24hrs</div></div>
+              <div class="imp"><div class="imp-num">−70%</div><div class="imp-label">Manual inventory rec time</div></div>
+              <div class="imp"><div class="imp-num">48hr</div><div class="imp-label">Earlier delay detection</div></div>
+              <div class="imp"><div class="imp-num">3 to 5%</div><div class="imp-label">Freight cost recovered</div></div>
+            </div>
+          </div>
+        </div></div>
+      </div>
+
+      <!-- 05 TREASURY & FP&A -->
+      <div class="dd theme-cyan">
+        <div class="dd-header">
+          <span class="dd-num">05</span>
+          <div class="dd-title-wrap"><div class="dd-title">Treasury & FP&A</div><div class="dd-sub">Cash management, forecasting, scenario planning, working capital</div></div>
+          <span class="dd-count">9 workflows</span>
+          <span class="dd-toggle" aria-label="Expand">+</span>
+        </div>
+        <div class="dd-expand"><div class="dd-expand-inner">
+          <div class="dd-body">
+            <div class="dd-narrative">
+              <div class="dd-block"><h4>Problem</h4><p>Rolling forecast takes a week and is stale by the time the board sees it. Variance causes are argued, not traced. Cash positioning is manual and next-day at best.</p></div>
+              <div class="dd-block"><h4>How it works</h4><p>Agent rebuilds forecast nightly against actuals, auto-detects variance drivers, writes plain-English commentary, consolidates cash positions in real-time, and models scenarios.</p></div>
+              <div class="dd-block"><h4>Output</h4><p>Daily refreshed forecast. Auto-written variance commentary. Scenario library with cash impact. Real-time cash dashboard. 13-week cash flow forecast. Working capital alerts.</p></div>
+            </div>
+            <div class="dd-workflows">
+              <h4>Workflows covered</h4>
+              <div class="wf-list">
+                <div class="wf-item"><span class="wf-dot"></span>Cash position tracking</div>
+                <div class="wf-item"><span class="wf-dot"></span>Cash flow forecasting</div>
+                <div class="wf-item"><span class="wf-dot"></span>Bank transaction reconciliation</div>
+                <div class="wf-item"><span class="wf-dot"></span>Liquidity monitoring</div>
+                <div class="wf-item"><span class="wf-dot"></span>Budget vs actual analysis</div>
+                <div class="wf-item"><span class="wf-dot"></span>Forecast variance analysis</div>
+                <div class="wf-item"><span class="wf-dot"></span>Scenario planning support</div>
+                <div class="wf-item"><span class="wf-dot"></span>Working capital analysis</div>
+                <div class="wf-item"><span class="wf-dot"></span>Cost trend analysis</div>
+              </div>
+            </div>
+            <div class="dd-impact">
+              <div class="imp"><div class="imp-num">5→1</div><div class="imp-label">Analyst-days per forecast cycle</div></div>
+              <div class="imp"><div class="imp-num">Daily</div><div class="imp-label">Forecast freshness, from monthly</div></div>
+              <div class="imp"><div class="imp-num">12pts</div><div class="imp-label">MAPE accuracy improvement</div></div>
+              <div class="imp"><div class="imp-num">Real-time</div><div class="imp-label">Cash visibility, from next-day</div></div>
+            </div>
+          </div>
+        </div></div>
+      </div>
+
+      <!-- 06 EXPENSE & AUDIT -->
+      <div class="dd theme-rose">
+        <div class="dd-header">
+          <span class="dd-num">06</span>
+          <div class="dd-title-wrap"><div class="dd-title">Expense & Audit</div><div class="dd-sub">Expense validation, fraud detection, policy compliance, audit trails</div></div>
+          <span class="dd-count">9 workflows</span>
+          <span class="dd-toggle" aria-label="Expand">+</span>
+        </div>
+        <div class="dd-expand"><div class="dd-expand-inner">
+          <div class="dd-body">
+            <div class="dd-narrative">
+              <div class="dd-block"><h4>Problem</h4><p>Claims approved on trust, audited after the fact. Fake invoices and duplicates slip through. Policy violations surface quarterly, not at submission. Audit prep takes weeks.</p></div>
+              <div class="dd-block"><h4>How it works</h4><p>Agent validates every claim at submission: receipt authenticity, policy, limits. Cross-checks for fraud and duplicates. Risk-scores and routes high-risk items. Auto-generates audit trails.</p></div>
+              <div class="dd-block"><h4>Output</h4><p>Pre-validated claims with risk scores. Blocked fraud and duplicates. Spend analytics dashboard. Policy compliance scorecard. Audit-ready trail. Risk-ranked exception report.</p></div>
+            </div>
+            <div class="dd-workflows">
+              <h4>Workflows covered</h4>
+              <div class="wf-list">
+                <div class="wf-item"><span class="wf-dot"></span>Expense claim validation</div>
+                <div class="wf-item"><span class="wf-dot"></span>Fake invoice detection</div>
+                <div class="wf-item"><span class="wf-dot"></span>Duplicate claim detection</div>
+                <div class="wf-item"><span class="wf-dot"></span>Policy compliance checks</div>
+                <div class="wf-item"><span class="wf-dot"></span>Spend limit validation</div>
+                <div class="wf-item"><span class="wf-dot"></span>Employee spend analytics</div>
+                <div class="wf-item"><span class="wf-dot"></span>Audit trail generation</div>
+                <div class="wf-item"><span class="wf-dot"></span>Risk scoring of claims</div>
+                <div class="wf-item"><span class="wf-dot"></span>Exception reporting</div>
+              </div>
+            </div>
+            <div class="dd-impact">
+              <div class="imp"><div class="imp-num">94%</div><div class="imp-label">Claims validated before approval</div></div>
+              <div class="imp"><div class="imp-num">−80%</div><div class="imp-label">Audit prep time</div></div>
+              <div class="imp"><div class="imp-num">2.3%</div><div class="imp-label">Fraudulent claims caught</div></div>
+              <div class="imp"><div class="imp-num">100%</div><div class="imp-label">Policy checks at submission</div></div>
+            </div>
+          </div>
+        </div></div>
+      </div>
+
+      <!-- 07 TAX & COMPLIANCE -->
+      <div class="dd theme-teal">
+        <div class="dd-header">
+          <span class="dd-num">07</span>
+          <div class="dd-title-wrap"><div class="dd-title">Tax & Compliance</div><div class="dd-sub">Tax code validation, regulatory reporting, compliance monitoring</div></div>
+          <span class="dd-count">7 workflows</span>
+          <span class="dd-toggle" aria-label="Expand">+</span>
+        </div>
+        <div class="dd-expand"><div class="dd-expand-inner">
+          <div class="dd-body">
+            <div class="dd-narrative">
+              <div class="dd-block"><h4>Problem</h4><p>Tax codes assigned inconsistently, so wrong codes mean wrong filings. Compliance checks are periodic, not continuous. Regulatory changes surface after the return is filed.</p></div>
+              <div class="dd-block"><h4>How it works</h4><p>Agent validates tax codes at the point of transaction. Monitors compliance rules continuously. Flags exceptions in real-time. Tracks regulatory changes and maps to affected processes.</p></div>
+              <div class="dd-block"><h4>Output</h4><p>Tax code validation report. Sales tax / VAT exception log. Continuous compliance dashboard. Regulatory change tracker. Audit readiness scorecard.</p></div>
+            </div>
+            <div class="dd-workflows">
+              <h4>Workflows covered</h4>
+              <div class="wf-list">
+                <div class="wf-item"><span class="wf-dot"></span>Tax code validation</div>
+                <div class="wf-item"><span class="wf-dot"></span>Sales tax / VAT checks</div>
+                <div class="wf-item"><span class="wf-dot"></span>Compliance rule validation</div>
+                <div class="wf-item"><span class="wf-dot"></span>Regulatory reporting support</div>
+                <div class="wf-item"><span class="wf-dot"></span>Audit readiness checks</div>
+                <div class="wf-item"><span class="wf-dot"></span>Transaction compliance monitoring</div>
+                <div class="wf-item"><span class="wf-dot"></span>Exception identification</div>
+              </div>
+            </div>
+            <div class="dd-impact">
+              <div class="imp"><div class="imp-num">99.2%</div><div class="imp-label">Tax code accuracy, from ~92%</div></div>
+              <div class="imp"><div class="imp-num">Continuous</div><div class="imp-label">Compliance, from quarterly</div></div>
+              <div class="imp"><div class="imp-num">−65%</div><div class="imp-label">Audit prep time</div></div>
+              <div class="imp"><div class="imp-num">0</div><div class="imp-label">Filing corrections needed</div></div>
+            </div>
+          </div>
+        </div></div>
+      </div>
+
+      <!-- 08 REPORTING & ANALYTICS -->
+      <div class="dd theme-slate">
+        <div class="dd-header">
+          <span class="dd-num">08</span>
+          <div class="dd-title-wrap"><div class="dd-title">Reporting & Analytics</div><div class="dd-sub">Financial reports, KPI dashboards, ad-hoc queries, cross-system reconciliation</div></div>
+          <span class="dd-count">8 workflows</span>
+          <span class="dd-toggle" aria-label="Expand">+</span>
+        </div>
+        <div class="dd-expand"><div class="dd-expand-inner">
+          <div class="dd-body">
+            <div class="dd-narrative">
+              <div class="dd-block"><h4>Problem</h4><p>Reports built manually in Excel. KPI dashboards break when the one person who maintains them is out. Ad-hoc CFO questions take hours. Cross-system data reconciliation is manual.</p></div>
+              <div class="dd-block"><h4>How it works</h4><p>Agent auto-generates financial reports each period. Maintains live KPI dashboards. Answers ad-hoc questions in natural language with drill-down. Reconciles data across systems continuously.</p></div>
+              <div class="dd-block"><h4>Output</h4><p>Auto-generated financials with period comparisons. Live KPI dashboards. Natural language query interface. Exception dashboards. Cross-system rec report. Trend analysis with anomaly flags.</p></div>
+            </div>
+            <div class="dd-workflows">
+              <h4>Workflows covered</h4>
+              <div class="wf-list">
+                <div class="wf-item"><span class="wf-dot"></span>Financial report generation</div>
+                <div class="wf-item"><span class="wf-dot"></span>KPI dashboards</div>
+                <div class="wf-item"><span class="wf-dot"></span>Ad-hoc query (ask finance data)</div>
+                <div class="wf-item"><span class="wf-dot"></span>Variance reporting</div>
+                <div class="wf-item"><span class="wf-dot"></span>Trend analysis</div>
+                <div class="wf-item"><span class="wf-dot"></span>Exception dashboards</div>
+                <div class="wf-item"><span class="wf-dot"></span>Drill-down reporting</div>
+                <div class="wf-item"><span class="wf-dot"></span>Data reconciliation across systems</div>
+              </div>
+            </div>
+            <div class="dd-impact">
+              <div class="imp"><div class="imp-num">−75%</div><div class="imp-label">Report prep time</div></div>
+              <div class="imp"><div class="imp-num"><30s</div><div class="imp-label">Ad-hoc query response</div></div>
+              <div class="imp"><div class="imp-num">Live</div><div class="imp-label">KPI dashboards, from weekly</div></div>
+              <div class="imp"><div class="imp-num">100%</div><div class="imp-label">Cross-system consistency checks</div></div>
+            </div>
+          </div>
+        </div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── DEMO CTA ─── -->
+<span id="form" style="position:relative;display:block;height:0"></span>
+<section id="demo-form">
+  <div class="cta-wrap-outer">
+    <div class="cta-wrap">
+      <div>
+        <span class="eyebrow">Get Started</span>
+        <h2 class="sec">See how this works<br>in your environment</h2>
+        <p class="cta-intro">We plug into a sandbox of your ERP, run one workflow end-to-end on your data, and send you the output. No decks.</p>
+        <div class="cta-feats">
+          <div class="cta-feat"><div class="cta-feat-icon">✓</div><p>Live agent demonstration: watch AI agents execute your workflows in real time</p></div>
+          <div class="cta-feat"><div class="cta-feat-icon">✓</div><p>Your actual data: see it working with your ERP and real transactions</p></div>
+          <div class="cta-feat"><div class="cta-feat-icon">✓</div><p>Customized demo: we focus on your biggest pain points and workflows</p></div>
+        </div>
+      </div>
+      <div class="form-box">
+        <div class="form-title">Book Your Working Session</div>
+        <span class="form-eyebrow">30 minutes · No commitment</span>
+        [wpforms id="3405"]
+      </div>
+    </div>
+  </div>
+
+  <style>
+    #demo-form{background:#fff;padding:96px 0 120px;border-top:none}
+    #demo-form .cta-wrap-outer{max-width:1180px;margin:0 auto;padding:0 32px}
+    #demo-form .eyebrow{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:#16A34A;display:block;text-align:left;margin-bottom:14px}
+    #demo-form h2.sec{font-family:'Source Serif 4',Georgia,serif;font-size:clamp(28px,3.8vw,40px);font-weight:600;line-height:1.1;letter-spacing:-.03em;text-align:left;color:#0d1410;margin-bottom:12px}
+    #demo-form .cta-intro{font-size:15px;color:#374151;line-height:1.75;margin-bottom:8px;max-width:480px}
+    #demo-form .cta-wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:center}
+    #demo-form .cta-feats{display:flex;flex-direction:column;gap:16px;margin-top:28px}
+    #demo-form .cta-feat{display:flex;align-items:flex-start;gap:12px}
+    /* FIX: add display:flex to icon so it centers properly */
+    #demo-form .cta-feat-icon{width:24px;height:24px;background:rgba(22,163,74,.1);border:1px solid rgba(22,163,74,.25);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#16A34A;font-weight:700;flex-shrink:0;font-size:12px}
+    #demo-form .cta-feat p{font-size:14px;color:#374151;margin:0;line-height:1.6}
+    #demo-form .form-box{background:#fff;border:2px solid #22C55E;border-radius:6px;padding:40px 36px;box-shadow:0 24px 64px rgba(0,0,0,.2),0 8px 24px rgba(0,0,0,.12),0 2px 8px rgba(0,0,0,.08);position:relative}
+    #demo-form .form-title{font-family:'Source Serif 4',Georgia,serif;font-size:22px;font-weight:400;color:#0d1410;margin-bottom:4px;letter-spacing:-.01em}
+    #demo-form .form-eyebrow{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:#16A34A;margin-bottom:28px;display:block}
+    #demo-form .form-box label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#1a1a1a;display:block;margin-bottom:6px}
+    #demo-form .form-box input,#demo-form .form-box textarea,#demo-form .form-box select{width:100%;padding:12px 0;background:transparent;border:none;border-bottom:1px solid rgba(0,0,0,.2);border-radius:0;color:#0d1410;font-size:14px;font-family:'DM Sans',sans-serif;outline:none;transition:border-color .2s}
+    #demo-form .form-box input:focus,#demo-form .form-box textarea:focus{border-bottom-color:#22C55E;box-shadow:none}
+    #demo-form .form-box input::placeholder,#demo-form .form-box textarea::placeholder{color:rgba(0,0,0,.5);font-size:13px}
+    #demo-form .form-box textarea{resize:none;min-height:72px;line-height:1.6}
+    #demo-form .form-box .wpforms-container{margin:0!important;background:transparent!important}
+    #demo-form .form-box .wpforms-field{margin-bottom:20px!important;padding:0!important}
+    #demo-form .form-box .wpforms-field-label{font-size:10px!important;font-weight:700!important;text-transform:uppercase!important;letter-spacing:.1em!important;color:#1a1a1a!important;margin-bottom:6px!important;display:block!important}
+    #demo-form .form-box .wpforms-field input,#demo-form .form-box .wpforms-field textarea,#demo-form .form-box .wpforms-field select{width:100%!important;padding:12px 0!important;background:transparent!important;border:none!important;border-bottom:1px solid rgba(0,0,0,.2)!important;border-radius:0!important;color:#0d1410!important;font-size:14px!important;font-family:'DM Sans',sans-serif!important;outline:none!important;transition:border-color .2s!important;box-shadow:none!important;height:auto!important;max-width:100%!important;box-sizing:border-box!important}
+    #demo-form .form-box .wpforms-field input:focus,#demo-form .form-box .wpforms-field textarea:focus{border-bottom-color:#22C55E!important;box-shadow:none!important}
+    #demo-form .form-box .wpforms-submit-container{margin-top:8px!important;padding:0!important}
+    #demo-form .form-box .wpforms-submit{width:100%!important;padding:15px!important;background:transparent!important;color:#22C55E!important;border:1px solid #22C55E!important;border-radius:2px!important;font-size:12px!important;font-weight:700!important;letter-spacing:.1em!important;text-transform:uppercase!important;cursor:pointer!important;font-family:'DM Sans',sans-serif!important;transition:all .25s!important;height:auto!important}
+    #demo-form .form-box .wpforms-submit:hover{background:#22C55E!important;color:#0A0F0D!important}
+    #demo-form .form-box .wpforms-hidden{display:none!important}
+    @media(max-width:900px){#demo-form .cta-wrap{grid-template-columns:1fr;gap:40px}}
+    @media(max-width:640px){
+      #demo-form{padding:56px 0 72px}
+      #demo-form .cta-wrap-outer{padding:0 18px}
+      #demo-form .form-box{padding:28px 20px}
+      #demo-form h2.sec{font-size:26px}
+    }
+  </style>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer class="site-footer">
+  <p>© 2026 ChatFin. All rights reserved.  ·  <a href="https://chatfin.ai/privacy-policy/">Privacy Policy</a>  ·  <a href="https://chatfin.ai/terms-and-conditions/">Terms of Service</a>  ·  <a href="https://chatfin.ai/talk-to-us/">Contact</a></p>
+</footer>
+
+<script>
+// ─── TOUCH-FRIENDLY ACCORDION ───────────────────────────────────────────────
+// On touch devices, :hover doesn't fire reliably. We use a JS click toggle
+// that adds/removes .is-open. On desktop, CSS :hover still handles it.
+(function() {
+  // Detect touch capability
+  var isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+
+  if (isTouch) {
+    // Disable CSS hover by adding a class to body - prevents stuck-hover on touch
+    document.body.classList.add('is-touch');
+
+    document.querySelectorAll('.dd-header').forEach(function(header) {
+      header.addEventListener('click', function() {
+        var card = header.closest('.dd');
+        var wasOpen = card.classList.contains('is-open');
+        // Close all open cards
+        document.querySelectorAll('.dd.is-open').forEach(function(c) {
+          c.classList.remove('is-open');
+          var toggle = c.querySelector('.dd-toggle');
+          if (toggle) toggle.textContent = '+';
+        });
+        // Toggle clicked card
+        if (!wasOpen) {
+          card.classList.add('is-open');
+          var toggle = card.querySelector('.dd-toggle');
+          if (toggle) toggle.textContent = '×';
+        }
+      });
+    });
+  }
+})();
+
+// On touch devices, suppress CSS :hover so only .is-open drives expansion
+(function() {
+  if (!document.body.classList.contains('is-touch')) return;
+  var style = document.createElement('style');
+  style.textContent = [
+    '.is-touch .dd:hover:not(.is-open) .dd-expand { grid-template-rows: 0fr !important; }',
+    '.is-touch .dd:hover:not(.is-open) .dd-body { opacity: 0 !important; transform: translateY(-6px) !important; }',
+    '.is-touch .dd:hover:not(.is-open) { border-color: var(--border) !important; background: var(--bg-card) !important; box-shadow: none !important; }',
+    '.is-touch .dd:hover:not(.is-open) .dd-num { opacity: .3 !important; }',
+    '.is-touch .dd:hover:not(.is-open) .dd-toggle { background: transparent !important; color: var(--text-muted) !important; border-color: var(--border-hover) !important; transform: none !important; }'
+  ].join('\n');
+  document.head.appendChild(style);
+})();
+
+// ─── ANCHOR SCROLL ──────────────────────────────────────────────────────────
+document.addEventListener('click', function (e) {
+  var a = e.target.closest('a[href="#demo-form"], a[href="#form"]');
+  if (!a) return;
+  var target = document.getElementById('demo-form');
+  if (!target) return;
+  e.preventDefault();
+  target.scrollIntoView({ behavior: 'auto', block: 'start' });
+  history.replaceState(null, '', '#demo-form');
+});
+if (location.hash === '#form' || location.hash === '#demo-form') {
+  window.addEventListener('load', function () {
+    var t = document.getElementById('demo-form');
+    if (t) t.scrollIntoView({ behavior: 'auto', block: 'start' });
+  });
+}
+</script>
+
